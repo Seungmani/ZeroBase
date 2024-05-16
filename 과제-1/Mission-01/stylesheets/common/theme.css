@@ -1,1 +1,10 @@
 /* Theme 스타일 작성 */
+:root {
+  --color-red: #e52330;
+	--color-blue: #0096e4;
+	--color-green: #c7cd7d;
+	--color-black: #181818;
+  --color-fade-black: rgba(000, 000, 000, 0.2);
+	--color-grey: #c4c4c4;
+	--color-white: #ffffff;
+}
