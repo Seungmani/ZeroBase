@@ -11,8 +11,6 @@ ul,li{
 
 .container{
 	width: 1020px;
-	height: auto;
-
 	margin: 0 auto;
 }
 
@@ -51,13 +49,26 @@ h3{
 	font-size: 24px;
 }
 
-.product-container{
-	display: block;
-	gap: 16px;
+.product-container>*:nth-child(1),
+.product-container>*:nth-child(3),
+.product-container>*:nth-child(4),
+.product-container>*:nth-child(5){
+	margin-bottom: 16px;
+	margin-right: 16px;
+}
+
+.product-container>*:nth-child(2){
+	margin-bottom: 16px;
+}
+
+.product-container>*:nth-child(7),
+.product-container>*:nth-child(8){
+	margin-right: 16px;
 }
 
 .big-image, 
 .small-image{
+	position: relative;
 	float: left;
 	height: 310px;
 	border: 1px solid #000;
@@ -76,4 +87,12 @@ h3{
 
 .small-image{
 	width: 243px;
+}
+
+li > img{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
 }

@@ -1,5 +1,5 @@
 /* Base 스타일 작성 */
-html, body{
+*{
 	box-sizing: border-box;
-	font-family: 'Noto Sans KR', sans-serif; /* 웹폰트 이름을 여기에 입력하세요. */
+	font-family: 'Noto Sans KR', sans-serif;
 }
