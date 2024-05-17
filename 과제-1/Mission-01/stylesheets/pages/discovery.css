@@ -110,9 +110,8 @@ li > img{
 	width: 42px;
 	height: 42px;
 
-	background-color: var(--color-grey);
+	background-color: var(--color-fade-black);
 	color: var(--color-white);
-	opacity: 0.8;
 
 	text-align: center;
 	line-height: 42px;
