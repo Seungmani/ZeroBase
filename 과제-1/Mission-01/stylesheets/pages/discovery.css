@@ -80,7 +80,7 @@ h3{
 
 .big-image:hover, 
 .big-image:focus, 
-.small-image:hover
+.small-image:hover,
 .small-image:focus{
 	border-color: var(--color-blue);
 }
