@@ -3,3 +3,18 @@
 	box-sizing: border-box;
 	font-family: 'Noto Sans KR', sans-serif;
 }
+
+.regular{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 400;
+}
+
+.medium{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+}
+
+.bold{
+	font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+}
