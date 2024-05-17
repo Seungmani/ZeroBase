@@ -9,6 +9,10 @@ ul,li{
 	list-style: none;
 }
 
+a{
+	text-decoration: none;
+}
+
 .container{
 	width: 1020px;
 	margin: 0 auto;
@@ -95,4 +99,41 @@ li > img{
 	left: 50%;
 
 	transform: translate(-50%, -50%);
+}
+
+.move-product-page{
+	position: absolute;
+	left: 20px;
+	top: 248px;
+
+	width: 42px;
+	height: 42px;
+
+	background-color: var(--color-grey);
+	color: var(--color-white);
+	opacity: 0.8;
+
+	text-align: center;
+	line-height: 42px;
+
+	font-size: 14px;
+
+	transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.move-product-page::after{
+	content: ">";
+}
+
+li:hover .move-product-page::before,
+li:focus .move-product-page::before{
+	content: "구매하기 ";
+}
+
+li:hover .move-product-page,
+li:focus .move-product-page{
+	background-color: var(--color-blue);
+	opacity: 1;
+	width: 112px;
+	transition: width 0.3s ease, background-color 0.3s ease, opacity;
 }
