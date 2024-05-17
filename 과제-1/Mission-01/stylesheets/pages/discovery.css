@@ -5,6 +5,10 @@ html, body, *{
 	color: var(--color-black)
 }
 
+ul,li{
+	list-style: none;
+}
+
 .container{
 	width: 1020px;
 	height: auto;
@@ -12,7 +16,7 @@ html, body, *{
 	margin: 0 auto;
 }
 
-header{
+.Logo-header{
 	margin-top: 100px;
 	margin-bottom: 48px;
 }
@@ -22,27 +26,41 @@ header{
 	height: 40px;
 }
 
-.product-container{
-	float: left;
-	gap: 16px;
+.main-header{
+	height: 28px;
+	margin-bottom: 24px;
 }
 
-h2::after{
-	content: " | ";
-	color: var(--color-grey);
+.main-header>*{
+	display: inline;
+	vertical-align: middle;
+}
 
+h2{
+	color: var(--color-black);
 	font-size: 24px;
 }
 
-h6{
+h3{
 	color: var(--color-grey);
 	font-size: 16px;
 }
 
+.separator{
+	color: var(--color-grey);
+	font-size: 24px;
+}
+
+.product-container{
+	display: block;
+	gap: 16px;
+}
+
 .big-image, 
 .small-image{
+	float: left;
 	height: 310px;
-	border: 1px solid #000
+	border: 1px solid #000;
 }
 
 .big-image:hover, 
