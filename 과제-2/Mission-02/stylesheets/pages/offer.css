@@ -1,1 +1,19 @@
 /* 오늘의 쇼핑 제안 */
+
+.container{
+	width: 1022px;
+	height: auto;
+	margin: 0 auto;
+	border: 1px solid #000;
+}
+
+.logo-wrap{
+	display: inline-block;
+	width: 100%;		
+}
+
+.logo-wrap picture,
+.logo-wrap img {
+  width: 176px;
+  height: 40px;
+}
