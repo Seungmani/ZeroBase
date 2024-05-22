@@ -4,7 +4,11 @@
 	width: 1022px;
 	height: auto;
 	margin: 0 auto;
-	border: 1px solid #000;
+}
+
+.container>header{
+	margin-top: 100px;
+	margin-bottom: 48px;
 }
 
 .logo-wrap{
@@ -16,4 +20,118 @@
 .logo-wrap img {
   width: 176px;
   height: 40px;
+}
+
+.shopping-suggestions-title{
+	position: relative;
+  padding-left: 40px; 
+	margin-bottom: 24px;
+	font-size: 24px;
+	line-height: 1.15;
+	color: var(--color-black);
+	font-weight: 500;
+}
+
+.shopping-suggestions-title::before{
+	content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;	
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+	background-image: url('../../assets/icon/shopping.svg'); /* 아이콘 이미지 경로 */
+	background-size: contain; /* 아이콘 크기에 맞게 배경 크기 조정 */
+	background-repeat: no-repeat; /* 배경 이미지 반복 없음 */
+}
+
+.shopping-suggestions-list{
+	display: flex;
+	justify-content: space-between;
+	gap: 5px;
+}
+
+.shopping-suggestions-item{
+	position: relative;
+	width: 200px;
+	height: 270px;
+	padding-top: 14px;
+}
+
+.shopping-suggestions-item>a{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.discount-badge{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 53px;
+	height: 30px;
+	border-radius: 0 0 4px 0;
+	background-color: var(--color-red-500);
+	color: var(--color-white);
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	line-height: 30px;
+}
+
+.product-name{
+	font-size: 14px;
+	margin: 12px 0;
+	line-height: 1.2;
+	color: var(--color-black);
+}
+
+.free-post{
+	font-size: 14px;
+	color: var(--color-gray-700);
+	line-height: 1.2;
+	margin-bottom: 4px;
+}
+
+.rocket-post{
+	width: 55px;
+	height: 15px;
+	margin-bottom: 4px;
+}
+
+.rate-participants{
+	font-size: 14px;
+	line-height: 1.2;
+	color: var(--color-gray-700);
+}
+
+.product-rate{
+	height: 15px;
+	overflow-y: hidden;
+	position: relative;
+}
+
+.product-rate .rate-img{
+	position: absolute;
+	top:0;
+	left: 0;
+}
+
+.product-rate .rate-img.rate-4{
+	transform: translateY(calc(-152px/11*8));
+}
+
+.product-rate .rate-img.rate-4-5{
+	transform: translateY(calc(-152px/11*9));
+}
+
+.product-rate .rate-img.rate-5{
+	transform: translateY(calc(-152px/11*10));
+}
+
+
+.rate-participants{
+	position: absolute;
+	top: 0;
+	left: 70px;
 }
