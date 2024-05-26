@@ -56,6 +56,7 @@ ul,li{
 	border-top: 1px solid;
 	border-bottom: 1px solid;
 	margin-bottom: 24px;
+	gap: 16px;
 }
 
 .CategoryBestProduct.life{
@@ -177,5 +178,64 @@ ul,li{
 }
 
 .productCardGroup{
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
 
+.productCardGroup::after{
+	position: absolute;
+	top: 50%;
+	content: '';
+	width: 528px;
+	height: 0.5px;
+	background-color: #AAA9A9;
+}
+
+.productCard{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 160px;
+	height: 300px;
+	margin-top: 9px;
+	padding: 0 4px;
+}
+
+.productCard .productImage{
+	margin-bottom: 12px;
+}
+
+.productCard .productName{
+	margin-bottom: 12px;
+	font-size: 14px;
+	line-height: 1.2;
+}
+
+.productCard .productPrice,
+.productPriceAndRocket{
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	line-height: 1.2;
+}
+
+.bold{	
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.rocket-wrapper{
+	margin-left: 6px;
+	width: 54px;
+	height: 14px;
+}
+
+.discount-type{
+	color: var(--color-red-500);
+	font-size: 14px;
+	line-height: 1.2;
+	align-self: start;
+	margin-bottom: 4px;
 }
