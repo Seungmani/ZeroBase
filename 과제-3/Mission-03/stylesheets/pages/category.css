@@ -41,6 +41,7 @@ ul,li{
 
 .CategoryBestHeadline>h2{
 	font-size: 16px;
+	font-weight: 500;
 	line-height: 1.15;
 }
 
@@ -51,17 +52,16 @@ ul,li{
 }
 
 .CategoryBestProduct{
-	position: relative;
 	display: flex;
 	border-top: 1px solid;
 	border-bottom: 1px solid;
+	margin-bottom: 24px;
 }
 
 .CategoryBestProduct.life{
 	border-color: var(--color-brown-300);
 	color: var(--color-brown-300);
 }
-
 
 .CategoryNav{
 	padding-top: 48px;
@@ -71,25 +71,29 @@ ul,li{
 .CategoryNav h2{
 	margin-bottom: 8px;
 	font-size: 24px;
+	font-weight: 500;
 	line-height: 1.15;
 	margin-right: 62px;
 }
 
 .CategoryNav .goLink {
 	display: inline-block;
+	line-height: 1.2;
 	margin-bottom: 248px;
 	padding-right: 10px;
 	vertical-align: middle;
 	background: url('../../assets/icon/angle-right-default.svg') no-repeat right center;
 	background-size: 6px 10px; 
 	color: #929292; 
+	font-size: 14px;
+	font-weight: 700;
 	text-decoration: none;
 }
 
 .HashTagGroup .HashTagTitle{
 	margin-bottom: 20px;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .HashTagList{
@@ -109,4 +113,69 @@ ul,li{
 .SlideBanner{
 	position: relative;
 	width: 320px;
+}
+
+.BannerItem:not(:first-child){
+	display: none;
+}
+
+.BannerItem{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.BannerItem .SlideBannerText,
+.BannerItem .IndicateGroup{
+	margin: 0 auto;
+}
+
+.BannerItem .SlideBannerText{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 260px;
+	height: 90px;
+	bottom: 58px;
+	text-align: center;
+	background-color: var(--color-brown-300);
+	color: #fff;
+}
+
+.SlideBannerTextLarge{
+	margin-bottom: 8px;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.SlideBannerTextSmall{
+	font-size: 14px;
+	line-height: 1.2;
+}
+
+.BannerItem .IndicateGroup{
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+	bottom: 22px;
+	width: 32px;
+}
+
+.Indicator{
+	width: 12px;
+	height: 12px;
+	border-radius: 12px;
+	background-color: var(--color-gray-600);
+}
+
+.Indicator.active{
+	background-color: var(--color-gray-700);
+}
+
+.productCardGroup{
+
 }
