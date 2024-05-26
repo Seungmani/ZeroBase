@@ -1,3 +1,21 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+ul,li{
+	list-style: none;
+}
+
+.color-blue{
+	color: var(--color-blue-600) !important;
+}
+
+.color-black{
+	color: #000 !important;
+}
+
 /* 카테고리별 추천 광고상품 */
 .header-logo{
 	width: 1020px;
@@ -14,5 +32,81 @@
 .container{
 	width: 1020px;
 	margin: 0 auto;
-	border: 1px solid #000;
+}
+
+.CategoryBestHeadline{
+	margin-left: 2px;
+	margin-bottom: 24px;
+}
+
+.CategoryBestHeadline>h2{
+	font-size: 16px;
+	line-height: 1.15;
+}
+
+.CategoryBestHeadline>h3{
+	font-size: 24px;
+	line-height: 1.15;
+	font-weight: 700;
+}
+
+.CategoryBestProduct{
+	position: relative;
+	display: flex;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+.CategoryBestProduct.life{
+	border-color: var(--color-brown-300);
+	color: var(--color-brown-300);
+}
+
+
+.CategoryNav{
+	padding-top: 48px;
+	padding-left: 24px;
+}
+
+.CategoryNav h2{
+	margin-bottom: 8px;
+	font-size: 24px;
+	line-height: 1.15;
+	margin-right: 62px;
+}
+
+.CategoryNav .goLink {
+	display: inline-block;
+	margin-bottom: 248px;
+	padding-right: 10px;
+	vertical-align: middle;
+	background: url('../../assets/icon/angle-right-default.svg') no-repeat right center;
+	background-size: 6px 10px; 
+	color: #929292; 
+	text-decoration: none;
+}
+
+.HashTagGroup .HashTagTitle{
+	margin-bottom: 20px;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.HashTagList{
+	width: 124px;
+}
+
+.HashTagGroup .HashTagItem{
+	display: inline-block;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid;
+	margin-bottom: 12px;
+	padding: 0 10px;
+	font-size: 12px;
+}
+
+.SlideBanner{
+	position: relative;
+	width: 320px;
 }
