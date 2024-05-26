@@ -56,12 +56,18 @@ ul,li{
 	border-top: 1px solid;
 	border-bottom: 1px solid;
 	margin-bottom: 24px;
-	gap: 16px;
 }
 
 .CategoryBestProduct.life{
 	border-color: var(--color-brown-300);
 	color: var(--color-brown-300);
+	--bcg: var(--color-brown-300);
+}
+
+.CategoryBestProduct.kitchen{
+	border-color: var(--color-green-700);
+	color: var(--color-green-700);
+	--bcg: var(--color-green-700);
 }
 
 .CategoryNav{
@@ -70,11 +76,11 @@ ul,li{
 }
 
 .CategoryNav h2{
+	width: 89px;
 	margin-bottom: 8px;
 	font-size: 24px;
 	font-weight: 500;
 	line-height: 1.15;
-	margin-right: 62px;
 }
 
 .CategoryNav .goLink {
@@ -141,8 +147,8 @@ ul,li{
 	width: 260px;
 	height: 90px;
 	bottom: 58px;
+	background-color: var(--bcg);
 	text-align: center;
-	background-color: var(--color-brown-300);
 	color: #fff;
 }
 
@@ -201,6 +207,10 @@ ul,li{
 	height: 300px;
 	margin-top: 9px;
 	padding: 0 4px;
+}
+
+.productCard:nth-child(3n-2){
+	margin-left: 16px;
 }
 
 .productCard .productImage{
