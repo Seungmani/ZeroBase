@@ -15,6 +15,7 @@ ul, li {
 
 .header-container {
   width: 100%;
+	border-bottom: 1px solid var(--color-gray-100);
 }
 
 .header-container .login-bar {
@@ -31,8 +32,6 @@ ul, li {
   height: 34px;
 	margin: 0 auto;
 	gap: 8px;
-
-	background-color: aqua;
 }
 
 .login-bar-item{
@@ -67,4 +66,331 @@ ul, li {
 	margin: 0 auto;
 	width: 1020px;
 	height: 116px;
+	grid-template-areas:
+	"카테 로고 로고 검색 검색 마이 마이 카트 카트"
+	"카테 로고 로고 검색 검색 마이 마이 카트 카트"
+	"카테 타입 타입 타입 타입 . . . .";
+}
+
+.button--category{
+	grid-area: 카테;
+	width: 110px;
+	height: 116px;
+	margin-right: 20px;
+	background-color: var(--color-blue-600);
+	border: none;
+	color: white;
+}
+
+.button-category-info img{
+	margin-bottom: 12px;
+}
+
+.button-category-text{
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.logo-container{
+	grid-area: 로고;
+	margin-top: 34px;
+	margin-bottom: 0;
+	margin-left: 30px;
+}
+
+.logo-img{
+	width: 176px;
+	height: 40px;
+}
+
+.search-form{
+	position: relative;
+	display: flex;
+	align-items: center;
+	grid-area: 검색;
+	width: 516px;
+	height: 40px;
+	border: 1px solid var(--color-blue-600);
+	margin-top: 34px;
+}
+
+.search-category{
+	position: relative;
+  display: flex;
+	align-items: center;
+	width: 134px;
+	height: 100%;
+	border-right: 1px solid var(--color-gray-100);
+	text-align: center;
+}
+
+.search-category select{
+	appearance: none;
+	-webkit-appearance: none;
+  -moz-appearance: none;
+	position: absolute;
+	left: 12px;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.2;
+	border: none;
+	color: var(--color-gray-700);;
+}
+
+.search-category select:focus {
+  outline: none;
+}
+
+.search-category .dropdown-icon{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40px;
+	height: 40px;
+}
+
+.search-category .dropdown-icon path{
+	fill: var(--color-gray-700);
+	width: 9px;
+	height: 6px;
+}
+
+.search-form .search-input{
+	padding-left: 12px;
+	border: none;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.search-input::placeholder {
+  font-size: 14px;
+}
+
+.voice-search-btn,
+.keyword-search-btn{
+	position: absolute;
+	top: 0;
+	width: 40px;
+	height: 40px;
+	border: none;
+}
+
+.voice-search-btn{
+	right: 40px;
+	background: url('../../assets/icon/mic.svg') no-repeat center;
+}
+
+.keyword-search-btn{
+	right: 0;
+	background: url('../../assets/icon/search.svg') no-repeat center;
+}
+
+.myCoupang{
+	grid-area: 마이;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50px;
+	margin: 34px 10px 0;
+}
+
+.btn-myCoupang::before {
+  content: ""; 
+	display: block;
+  background: url('../../assets/icon/my-coupang.svg') no-repeat center;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+	color: var(--color-gray-900);
+}
+
+.btn-myCoupang,
+.btn-cart{
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.2;
+	background: none;
+	border: none;
+}
+
+.myCoupang .myCoupang-list{
+	display: none;
+}
+
+.myCoupang.is--active .myCoupang-list{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	position: absolute;
+	bottom: -135px;
+	width: 90px;
+	height: 130px;
+	border: 1px solid var(--color-gray-300);
+	background-color: #fff;
+	font-size: 12px;
+	font-weight: 400px;
+	line-height: 1.2;
+}
+
+.myCoupang.is--active .myCoupang-list::after{
+	content: "";
+	position: absolute;
+	top: -6px;
+	left: 50%;
+	width: 6px;
+	height: 6px;
+	border: 1px solid;
+	border-width: 1px 1px 0 0;
+	border-color: var(--color-gray-300);
+	background-color: #fff;
+	transform: rotate(-45deg) translateX(-50%);
+}
+
+.cart{
+	grid-area: 카트;
+	margin-top: 34px;
+}
+
+.cart .cart-info{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50px;
+}
+
+.product-count{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 18px;
+	height: 18px;
+	border-radius: 18px;
+	background-color: var(--color-blue-600);
+	text-align: center;
+	color: white;
+}
+
+.btn-cart::before {
+  content: ""; 
+	display: block;
+  background: url('../../assets/icon/cart.svg') no-repeat center;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+	color: var(--color-gray-900);
+}
+
+.cart .cart-list{
+	display: none;
+}
+
+.cart.cart--empty .cart-list,
+.cart.cart--added .cart-list{
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	bottom: -250px;
+	right: 0;
+	width: 287px;
+	height: auto;
+	border: 1px solid var(--color-gray-300);
+	background-color: #fff;
+}
+
+.cart.cart--empty .cart-list{
+	bottom: -85px;
+}
+
+.cart.cart--empty .cart-list::after,
+.cart.cart--added .cart-list::after{
+	content: "";
+	position: absolute;
+	top: -4px;
+	right: 20px;
+	width: 6px;
+	height: 6px;
+	border: 1px solid;
+	border-width: 1px 1px 0 0;
+	border-color: var(--color-gray-300);
+	background-color: #fff;
+	transform: rotate(-45deg);
+}
+
+.cart.cart--added .cart-list .cart-item{
+	display: flex;
+	align-items: center;
+}
+
+.cart-item:not(:last-of-type){
+	border-bottom: 1px solid var(--color-gray-300);
+}
+
+.cart.cart--empty .cart-list *{
+	height: 80px;
+}
+
+.cart.cart--empty .cart-list .cart-item,
+.cart.cart--empty .cart-list .more-item,
+.cart.cart--added .cart-list p{
+	display: none;
+}
+
+.cart.cart--added .cart-list .more-item{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80px;
+	font-size: 14px;
+	background-color: var(--color-gray-100);
+	border: 1px solid var(--color-gray-300);
+}
+
+.cart.cart--empty .cart-list p{
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	justify-content: center;
+	background-color: white;
+}
+
+.cart-item img{
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+}
+
+.cart-item .cart-item-text{
+	font-size: 14px;
+	margin: auto 0;
+}
+
+.type-navigation{
+	grid-area: 타입;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-left: 20px;
+	margin-bottom: 6px;
+}
+
+.type-navigation .type{
+	height: 26px;
+	padding: 0 14px;
+	display: inline-block;
+	text-align: center;
+	line-height: 26px;
+}
+
+.type-navigation .type>span{
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.type-navigation .type>img{
+	vertical-align: middle;
 }
