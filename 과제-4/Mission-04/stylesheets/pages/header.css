@@ -82,11 +82,11 @@ ul, li {
 	color: white;
 }
 
-.button-category-info img{
+.category-info img{
 	margin-bottom: 12px;
 }
 
-.button-category-text{
+.category-text{
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 1.2;
