@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+ul,li{
+  list-style: none;
+}
+
 /* ---------------------------------------------- */
 /* 헤더                                            */
 /* ---------------------------------------------- */
@@ -60,3 +64,140 @@
 /* ---------------------------------------------- */
 /* 푸터                                            */
 /* ---------------------------------------------- */
+.footer{
+  height: 349px;
+
+}
+
+.footer>*{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CustomerGuide{
+  height: 40px;
+  background-color: var(--color-gray-200);
+}
+
+.text-container{
+  display: flex;
+  align-items: center;
+}
+
+.CustomerGuide .text{
+  padding: 5px 14px 6px 14px;
+  color: var(--color-gray-800);
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+  font-weight: 400;
+}
+
+.CustomerGuide .divider{
+  color: var(--color-gray-800);
+  font-size: 12px;
+  margin-top: -3px;
+}
+
+.CoupangInformation-container{
+  display: flex;
+  height: 143px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-gray-800);
+  gap: 63px;
+}
+
+.CoupangInformation-container .logo{
+  width: 176px;
+  height: 40px;
+  background-image: url("../../assets/logo/logo-mono.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.CoupangInformationList,
+.CustomerCenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CustomerCenter .border{
+  display: inline-block;
+  width: 1px;
+  height: 13px;
+  margin: 0 12px;
+  border-left: 1px solid var(--color-gray-800);
+}
+
+.CustomerCenter .phone{
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.PaymentGuarantee{
+  width: 282px;
+}
+
+.PaymentGuarantee .title{
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.PaymentGuarantee .text{
+  font-weight: 400;
+}
+
+.text.bold,
+.bold{
+  font-weight: 700;
+}
+
+.CoupangInformation{
+  height: 207px;
+}
+
+.CopyrightSNS{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 102px;
+  background-color: var(--color-gray-900);
+}
+
+.CopyrightSNS .CopyrightSNSGroup{
+  width: 1020px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.CopyrightSNS .CopyrightSNSGroup .text{
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 1.2;
+  color: var(--color-gray-200);
+}
+
+.sns{
+  display: flex;
+  gap: 10px;
+}
+
+.instagram-img{
+  width: 34px;
+  height: 34px;
+  border-radius: 34px;
+  background : linear-gradient(
+    174.12deg, #2856EB 2%, #BC1888 20%,
+    #cc2266 35%, #dc2743 53%, #e6683c 76%,
+    #f89433 96%
+    )
+}
