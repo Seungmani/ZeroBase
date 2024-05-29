@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>내비게이션 및 푸터 - 쿠팡(Coupang)</title>
-  <link rel="icon" href="/assets/favicon/favicon.png" />
+  <link rel="icon" href="./assets/favicon/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/stylesheets/main.css" />
+  <link rel="stylesheet" href="./stylesheets/main.css" />
   <script type="module" src="./js/main.js"></script>
   </head>
 
@@ -21,7 +21,14 @@
       <h1 class="sr-only">Coupang</h1>
       <div class="header__inner">
         <!-- 카테고리 버튼은 .header__inner 영역 안에 마크업 해주세요. -->
-
+        <button class="button--category">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 6H0V0H30V6Z" fill="white"/>
+            <path d="M30 18H0V12H30V18Z" fill="white"/>
+            <path d="M0 30H30V24H0V30Z" fill="white"/>
+          </svg>
+          <p class="button--category-text">카테고리</p>  
+        </button>
       </div>
     </header>
 
@@ -31,7 +38,11 @@
 
       <div class="navigation__inner">
         <!-- 카테고리별 내비게이션(메뉴) 영역 -->
-
+        <ul class="navigation__list">
+          <li class="depth_1"></li>
+          <li class="depth_2"></li>
+          <li class="depth_3"></li>
+        </ul>
       </div>
     </nav>
 
