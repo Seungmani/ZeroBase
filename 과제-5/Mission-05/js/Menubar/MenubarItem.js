@@ -32,7 +32,7 @@ export class MenubarItem {
     this.domNode.addEventListener('mouseout', this.handleMouseOut.bind(this));
 
     let nextElement = this.domNode.nextElementSibling;
-
+    
     if (nextElement && nextElement.tagName === 'UL') {
       this.domNode.setAttribute('aria-controls', uuidv4());
       this.setExpanded(false);

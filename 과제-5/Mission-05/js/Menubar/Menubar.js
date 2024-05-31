@@ -53,7 +53,7 @@ export class Menubar {
     let menubarItem, textContent, numItems;
 
     let elem = this.domNode.firstElementChild;
-
+    
     while (elem) {
       let menuElement = elem.firstElementChild;
 

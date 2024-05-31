@@ -9,4 +9,5 @@ const menubar = new Menubar(navigation, {
 
 menubar.init();
 
+
 console.log(menubar);
