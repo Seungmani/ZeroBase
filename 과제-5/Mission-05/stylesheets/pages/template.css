@@ -34,8 +34,11 @@ ul,li{
 }
 
 .button--category:focus {
-  outline: none; 
-  box-shadow: 0 0 0 1px var(--color-red-500); ; 
+  outline: 0 none; 
+}
+
+.button--category:focus-visible{
+  box-shadow: 0 0 0 2px var(--color-red-500); ; 
   border-radius: 4px;
 }
 

@@ -46,12 +46,12 @@ h2{
 }
 
 h3{
-	color: var(--color-grey);
+	color: var(--color-gray--600);
 	font-size: 16px;
 }
 
 .separator{
-	color: var(--color-grey);
+	color: var(--color-gray--6  00);
 	font-size: 24px;
 	margin: 0 10px;
 }
@@ -85,7 +85,7 @@ h3{
 .big-image:focus, 
 .small-image:hover,
 .small-image:focus{
-	border-color: var(--color-blue);
+	border-color: var(--color-blue--600);
 }
 
 .big-image{
@@ -113,7 +113,7 @@ li > img{
 	width: 42px;
 	height: 42px;
 
-	background-color: var(--color-fade-black);
+	background-color: var(--color-opacity----20);
 	color: var(--color-white);
 
 	text-align: center;
@@ -135,7 +135,7 @@ li:focus .move-product-button::before{
 
 li:hover .move-product-button,
 li:focus .move-product-button{
-	background-color: var(--color-blue);
+	background-color: var(--color-blue--600);
 	opacity: 1;
 	width: 112px;
 	transition: width 0.3s ease, background-color 0.3s ease, opacity;
