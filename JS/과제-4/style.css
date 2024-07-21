@@ -29,14 +29,15 @@ body {
 	font-size: 32px;
 }
 
-.calender {
+.calendar {
+	display: none;
 	width: 25em;
 	margin-top: 5px;
 	border-radius: 15px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.calender-nav {
+.calendar-nav {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -52,7 +53,7 @@ body {
 	color: var(--white);
 }
 
-.calender-nav button {
+.calendar-nav button {
 	background: none;
 	border: none;
 	color: var(--white);
