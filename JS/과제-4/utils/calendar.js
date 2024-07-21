@@ -21,15 +21,7 @@ class Calendar {
 		this.#initializeDate();
     this.#render();
     this.#showMonthAndYear();
-    this.#settingCalendarGrid();
-
-    document.querySelector("#prev").addEventListener("click", () => this.#changeMonth(-1));
-    document.querySelector("#next").addEventListener("click", () => this.#changeMonth(1));
-    document.querySelector("#calendarInfo").addEventListener("click", (event) => {
-      if (event.target.classList.contains("day") && !event.target.classList.contains("other-month")) {
-        this.#selectDate(event.target.textContent);
-      }
-    });
+    this.#setupEventListeners();
   }
 
 	#initializeDate() {
@@ -60,56 +52,64 @@ class Calendar {
   }
 
   #showMonthAndYear() {
-    const $year = document.querySelector("#year");
-    const $month = document.querySelector("#month");
+    document.querySelector("#year").textContent = this.#year;
+    document.querySelector("#month").textContent = this.#monthList[this.#month];
+  }
 
-    $year.textContent = this.#year;
-    $month.textContent = this.#monthList[this.#month];
+  #setupEventListeners() {
+    document.querySelector("#prev").addEventListener("click", () => this.#changeMonth(-1));
+    document.querySelector("#next").addEventListener("click", () => this.#changeMonth(1));
+    document.querySelector("#calendarInfo").addEventListener("click", (event) => {
+      if (event.target.classList.contains("day") && !event.target.classList.contains("other-month")) {
+        this.#selectDate(event.target.textContent);
+      }
+    });
   }
 
   #settingCalendarGrid() {
-		console.log("setting", this.#year, this.#month, this.#today)
     const $calendarGrid = document.querySelector("#calendarInfo");
     const firstDay = new Date(this.#year, this.#month, 1).getDay();
     const lastDate = new Date(this.#year, this.#month + 1, 0).getDate();
     const prevLastDate = new Date(this.#year, this.#month, 0).getDate();
-
     $calendarGrid.querySelectorAll(".day").forEach((cell) => cell.remove());
 
     for (let i = firstDay; i > 0; i--) {
-      const day = document.createElement("div");
-      day.className = "day other-month";
-      day.textContent = prevLastDate - i + 1;
-      $calendarGrid.appendChild(day);
+      this.#addDayElement($calendarGrid, prevLastDate - i + 1, "other-month", "day");
     }
 
     for (let day = 1; day <= lastDate; day++) {
-      const dayElement = document.createElement("div");
-      dayElement.className = "day";
-      if (
-        day === this.#today.getDate() &&
-        this.#month === this.#today.getMonth() &&
-        this.#year === this.#today.getFullYear()
-      ) {
-        dayElement.classList.add("today");
-      }
-      if ((firstDay + day - 1) % 7 === 0 || (firstDay + day - 1) % 7 === 6) {
-        dayElement.classList.add("weekend");
-      }
-      dayElement.textContent = day;
-      $calendarGrid.appendChild(dayElement);
+      const classes = ["day"];
+      if (this.#isToday(day)) classes.push("today");
+      if (this.#isWeekend(firstDay + day - 1)) classes.push("weekend");
+      this.#addDayElement($calendarGrid, day, ...classes);
     }
 
     const totalCells = firstDay + lastDate;
     const nextDays = 7 - (totalCells % 7);
     if (nextDays < 7) {
       for (let i = 1; i <= nextDays; i++) {
-        const day = document.createElement("div");
-        day.className = "day other-month";
-        day.textContent = i;
-        $calendarGrid.appendChild(day);
+        this.#addDayElement($calendarGrid, i, "other-month", "day");
       }
     }
+  }
+
+  #addDayElement(parent, text, ...classes) {
+    const dayElement = document.createElement("div");
+    dayElement.className = classes.join(" ");
+    dayElement.textContent = text;
+    parent.appendChild(dayElement);
+  }
+
+  #isToday(day) {
+    return (
+      day === this.#today.getDate() &&
+      this.#month === this.#today.getMonth() &&
+      this.#year === this.#today.getFullYear()
+    );
+  }
+
+  #isWeekend(dayIndex) {
+    return dayIndex % 7 === 0 || dayIndex % 7 === 6;
   }
 
 	#changeMonth(offset) {
@@ -152,6 +152,10 @@ class Calendar {
         event.target.id !== "date-input"
       ) calendar.#hideCalendar();
     });
+  }
+
+  static setCalendarSize(size) {
+    document.documentElement.style.setProperty('--calendar-size', size + 'px');
   }
 }
 
