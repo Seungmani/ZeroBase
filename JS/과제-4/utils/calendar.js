@@ -17,47 +17,46 @@ class Calendar {
     "December",
   ];
 
-  constructor(value) {
+  constructor() {
+		this.#initializeDate();
     this.#render();
-    if (value) {
-      const [y, m, d] = value.split("-");
-      this.#year = parseInt(y, 10);
-      this.#month = parseInt(m, 10) - 1; // 월은 0부터 시작
-      this.#today = new Date(this.#year, this.#month, parseInt(d, 10));
-    } else {
-      this.#today = new Date();
-      this.#month = this.#today.getMonth();
-      this.#year = this.#today.getFullYear();
-    }
-
     this.#showMonthAndYear();
     this.#settingCalendarGrid();
 
-    document.querySelector("#prev").addEventListener("click", () => this.#prevMonth());
-    document.querySelector("#next").addEventListener("click", () => this.#nextMonth());
-		document.querySelector("#calendarInfo").addEventListener("click", (event) => {
-			if (event.target.classList.contains("day")) this.#selectDate(event.target.textContent);
-		});
+    document.querySelector("#prev").addEventListener("click", () => this.#changeMonth(-1));
+    document.querySelector("#next").addEventListener("click", () => this.#changeMonth(1));
+    document.querySelector("#calendarInfo").addEventListener("click", (event) => {
+      if (event.target.classList.contains("day") && !event.target.classList.contains("other-month")) {
+        this.#selectDate(event.target.textContent);
+      }
+    });
+  }
+
+	#initializeDate() {
+    this.#today = new Date();
+    this.#month = this.#today.getMonth();
+    this.#year = this.#today.getFullYear();
   }
 
   #render() {
-    document.querySelector(".calendar").innerHTML = `<nav class="calendar-nav">
-        <button id="prev">&#9664;</button>
-          <div class="nav-info">
-            <h2 id="month" class="month"></h2>
-            <h3 id="year" class="year"></h3>
-          </div>
-        <button id="next">&#9654;</button>
-      </nav>
-      <div class="calendar-grid" id="calendarInfo">
-        <div class="week">SUN</div>
-        <div class="week">MON</div>
-        <div class="week">TUE</div>
-        <div class="week">WED</div>
-        <div class="week">THU</div>
-        <div class="week">FRI</div>
-        <div class="week">SAT</div>
-      </div>`;
+    document.querySelector(".calendar").innerHTML = `
+			<nav class="calendar-nav">
+				<button id="prev">&#9664;</button>
+				<div class="nav-info">
+					<h2 id="month" class="month"></h2>
+					<h3 id="year" class="year"></h3>
+				</div>
+				<button id="next">&#9654;</button>
+			</nav>
+			<div class="calendar-grid" id="calendarInfo">
+				<div class="week">SUN</div>
+				<div class="week">MON</div>
+				<div class="week">TUE</div>
+				<div class="week">WED</div>
+				<div class="week">THU</div>
+				<div class="week">FRI</div>
+				<div class="week">SAT</div>
+			</div>`;
   }
 
   #showMonthAndYear() {
@@ -69,13 +68,13 @@ class Calendar {
   }
 
   #settingCalendarGrid() {
+		console.log("setting", this.#year, this.#month, this.#today)
     const $calendarGrid = document.querySelector("#calendarInfo");
     const firstDay = new Date(this.#year, this.#month, 1).getDay();
     const lastDate = new Date(this.#year, this.#month + 1, 0).getDate();
     const prevLastDate = new Date(this.#year, this.#month, 0).getDate();
 
-    const cells = $calendarGrid.querySelectorAll(".day");
-    cells.forEach((cell) => cell.remove());
+    $calendarGrid.querySelectorAll(".day").forEach((cell) => cell.remove());
 
     for (let i = firstDay; i > 0; i--) {
       const day = document.createElement("div");
@@ -113,31 +112,25 @@ class Calendar {
     }
   }
 
-  #prevMonth() {
-    if (this.#month === 0) {
-      this.#month = 11;
-      this.#month--;
-    } else {
-      this.#month--;
-    }
-    this.#settingCalendarGrid();
-  }
-
-  #nextMonth() {
-    if (this.#month === 11) {
-      this.#month = 0;
-      this.#month++;
-    } else {
-      this.#month++;
-    }
+	#changeMonth(offset) {
+    this.#month += offset;
+    if (this.#month > 11) {
+			this.#month = 0;
+			this.#year += 1;
+		}
+    if (this.#month < 0) {
+			this.#month = 11;
+			this.#year -= 1;
+		}
+		this.#showMonthAndYear();
     this.#settingCalendarGrid();
   }
 
   #selectDate(day) {
-    const selectedDate = new Date(this.#year, this.#month, day);
-    const formattedDate = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`;
+    this.#today = new Date(this.#year, this.#month, day);
+    const formattedDate = `${this.#today.getFullYear()}-${String(this.#today.getMonth() + 1).padStart(2, "0")}-${String(this.#today.getDate()).padStart(2, "0")}`;
     document.querySelector("#date-input").value = formattedDate;
-		console.log(formattedDate)
+		console.log(formattedDate);
     this.#hideCalendar();
   }
 
@@ -146,6 +139,7 @@ class Calendar {
   }
 
   #showCalendar() {
+		this.#settingCalendarGrid();
     document.querySelector(".calendar").style.display = "block";
   }
 
