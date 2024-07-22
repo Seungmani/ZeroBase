@@ -2,3 +2,7 @@
 **/assets/
 *.txt
 */node_modules
+*.json
+*/node_modules
+node_modules/
+jspm_packages/

@@ -1,7 +1,6 @@
 // do something!
 const $toggle = document.querySelector(".toggle");
 const $nav = document.querySelector("nav");
-const $preload = document.querySelector(".preload");
 
 // nav 상태 저장 
 const saveNavOpenState = (isOpen) => {
