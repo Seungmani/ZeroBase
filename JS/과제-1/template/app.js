@@ -1,38 +1,24 @@
 // do something!
+import { saveState, getState } from './state.js';
 const $toggle = document.querySelector(".toggle");
 const $nav = document.querySelector("nav");
 
-// nav 상태 저장 
-const saveNavOpenState = (isOpen) => {
-	localStorage.setItem('sidenavState', isOpen ? 'open' : 'closed');
-}
+let isOpen;
 
-// nav 상태 불러오기
-const getNavState = () => {
-	return localStorage.getItem("sidenavState");
-}
-
-const changeNavState = () => {
-	$nav.classList.toggle("active");
-	saveNavOpenState($nav.classList.contains("active"));
-};
-
-const showNav = (state) => {
-	if (state === "open") $nav.classList.add("active");
-  else $nav.classList.remove("active");
-}
-
-const initialSetting = () => {
+window.addEventListener("DOMContentLoaded", () => {
+	const state = getState();
+	isOpen = state === null ? false : state.isOpen;
+	$nav.classList.toggle("active", isOpen);
 	document.body.style.visibility = "visible";
-	requestAnimationFrame(() => {
-		document.body.classList.remove("preload");
-	});
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-	const openState = getNavState();
-	showNav(openState);
-	initialSetting();
 });
 
-$toggle.addEventListener("click", changeNavState);
+window.addEventListener('beforeunload', () => {
+  saveState({isOpen});
+});
+
+
+$toggle.addEventListener("click", () => {
+	isOpen = !isOpen;
+	// document.body.classList.remove('preload');
+  $nav.classList.toggle('active', isOpen);
+});
