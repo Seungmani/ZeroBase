@@ -81,6 +81,11 @@ class Calendar {
       const classes = ["day"];
       if (this.#isToday(day)) classes.push("today");
       if (this.#isWeekend(firstDay + day - 1)) classes.push("weekend");
+      if (document.querySelector("#date-input").value) {
+        const [year, month, d] = document.querySelector("#date-input").value.split("-").map(Number);
+        console.log(year, month, d,this.#year, this.#month);
+        if (year === this.#year && month === this.#month + 1 && d === day) classes.push("clicked");
+      }
       this.#addDayElement($calendarGrid, day, ...classes);
     }
 
@@ -127,8 +132,8 @@ class Calendar {
   }
 
   #selectDate(day) {
-    this.#today = new Date(this.#year, this.#month, day);
-    const formattedDate = `${this.#today.getFullYear()}-${String(this.#today.getMonth() + 1).padStart(2, "0")}-${String(this.#today.getDate()).padStart(2, "0")}`;
+    const selectedDate = new Date(this.#year, this.#month, day);
+    const formattedDate = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`;
     document.querySelector("#date-input").value = formattedDate;
 		console.log(formattedDate);
     this.#hideCalendar();

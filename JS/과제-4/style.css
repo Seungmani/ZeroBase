@@ -118,7 +118,8 @@ body {
   border-radius: 50%;
 }
 
-.calendar-grid .day:hover {
+.calendar-grid .day:hover,
+.calendar-grid .day.clicked {
   background-color: var(--main-color);
   border-radius: 50%;
   color: var(--white);
