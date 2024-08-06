@@ -1,48 +1,36 @@
 // do something!
 import { CATEGORIES } from "../constant/constant.js"
-import { setCategory } from '../store.js';
+import { state } from '../store.js';
 
 class Nav {
-	constructor(container) {
-    this.container = container;
+  constructor($container) {
+    this.$container = $container;
+    this.render();
+    this.bindEvents();
   }
 
-	render() {
-    const nav = document.createElement('nav');
-    nav.classList.add("category-list");
-
-		const ul = document.createElement("ul");
-		ul.innerHTML = CATEGORIES.map( (category) => `
-			<li id="${category.id}" class="category-item${"all" === category.id ? ' active' : ''}">${category.name}</li>
-		`).join('');
-
-    nav.append(ul);
-    this.container.append(nav);
-
-    this.addEvent();
-	}
-
-  addEvent() {
-    this.container.addEventListener('click', (event) => {
-      const target = event.target;
-      if (target && target.matches('.category-item')) {
-        this.setActiveCategory(target.id);
-        setCategory(target.id);
-      }
-    });
+  render() {
+    this.$container.innerHTML = `
+      <ul>
+      ${CATEGORIES
+        .map(
+          ({ name, text }) =>
+            `<li id="${name}" class="category-item ${state.category === name ? 'active' : ''}">${text}</li>`
+        )
+        .join('')}
+      </ul>`;
   }
 
-  setActiveCategory(categoryId) {
-    const currentActive = this.container.querySelector('.category-item.active');
-    if (currentActive) {
-      currentActive.classList.remove('active');
-    }
+  bindEvents() {
+    this.$container.onclick = ({ target }) => {
+      if (!target.matches('.category-item:not(.active)')) return;
 
-    const newActive = this.container.querySelector(`#${categoryId}`);
-    if (newActive) {
-      newActive.classList.add('active');
-    }
+      this.$container.querySelector('.active').classList.remove('active');
+      target.classList.add('active');
+
+      state.category = target.id;
+    };
   }
-
 }
+
 export default Nav;

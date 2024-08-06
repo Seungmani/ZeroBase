@@ -1,33 +1,35 @@
-let state = {
-  category: 'all',
-  articles: [],
-  page: 1
+let state = null;
+let listeners = [];
+
+const createState = initialState => {
+  state = new Proxy(initialState, {
+    set(target, key, newState) {
+      if (target[key] === newState) return false;
+
+      target[key] = newState;
+      listeners.forEach(component => component.render()); // re-rendering
+
+      return true;
+    },
+  });
+
+  return state;
 };
 
-const listeners = [];
+const subscribe = newListener => {
+  if (!listeners.includes(newListener)) listeners = [...listeners, newListener];
 
-function setState(newState) {
-  state = { ...state, ...newState };
-  listeners.forEach(listener => listener());
-}
-
-export function getState() {
-  return state;
-}
-
-export function setCategory(category) {
-  setState({ category, page: 1, articles: [] });
-}
-
-export function addArticles(articles) {
-  setState({ articles: [...state.articles, ...articles], page: state.page + 1 });
-}
-
-export function subscribe(listener) {
-  listeners.push(listener);
+  // 구독 해지 함수
   return () => {
-    const index = listeners.indexOf(listener);
-    console.log(index, listener)
-    listeners.splice(index, 1);
+    listeners = listeners.filter(listener => listener !== newListener);
   };
-}
+};
+
+const store = {
+  state,
+  createState,
+  subscribe,
+};
+
+export default store;
+export { state, createState, subscribe };
