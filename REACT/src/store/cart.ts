@@ -1,5 +1,6 @@
 import { atom, selector } from "recoil";
 import { CART_ITEM } from "../constants/category";
+import { IProduct, productsList } from "./products";
 
 export interface ICartInfo {
   readonly id: number;
@@ -18,10 +19,6 @@ export interface ICartState {
   readonly items?: Record<string | number, ICartInfo>;
 }
 
-/**
- * 카트의 상태는 localStorage 기준으로 초기화 됩니다.
- * 카트의 상태는 새로고침해도 유지되어야 하기 때문입니다.
- */
 export const cartState = atom<ICartState>({
   key: "cart",
   default: {},
@@ -33,25 +30,86 @@ export const cartState = atom<ICartState>({
   ],
 });
 
+export const cartList = selector({
+  key: "cartList",
+  get: ({ get }) => {
+    const cart = get(cartState);
 
-/**
- * cartList를 구현 하세요.
- * id, image, count 등을 return합니다.
- */
+    try {
+      const products = get(productsList);
+      if (!cart.items || !products.length) return [];
 
-// addToCart는 구현 해보세요.
+      return Object.entries(cart.items)
+        .map(([id, { count }]) => {
+          const product = products.find((p) => p.id === Number(id));
+          if (product) {
+            return {
+              ...product,
+              count,
+            };
+          }
+          return null;
+        })
+        .filter((item) => item !== null) as IProduct[] & { count: number }[];
+    } catch (error) {
+      console.error("cartList Error:", error);
+      return [];
+    }
+  },
+});
 
-// removeFromCart는 참고 하세요.
-export const removeFromCart = (cart: ICartState, id: string) => {
-  const tempCart = { ...cart };
-  if (tempCart[id].count === 1) {
-    delete tempCart[id];
-    return tempCart;
+export const addToCart = (cart: ICartState, item: ICartInfo): ICartState => {
+  const updatedCart = { ...cart.items };
+
+  if (updatedCart[item.id]) {
+    updatedCart[item.id] = { ...updatedCart[item.id], count: updatedCart[item.id].count + 1 };
   } else {
-    return { ...tempCart, [id]: { id: id, count: cart[id].count - 1 } };
+    updatedCart[item.id] = item;
   }
+
+  return { items: updatedCart };
 };
 
-/**
- * 그 외에 화면을 참고하며 필요한 기능들을 구현 하세요.
- */
+// removeFromCart는 참고 하세요.
+export const removeFromCart = (cart: ICartState, item: ICartInfo) => {
+  const tempCart = { ...cart.items };
+  if (tempCart[item.id].count === 1) {
+    delete tempCart[item.id];
+  } else {
+    tempCart[item.id] = { ...tempCart[item.id], count: tempCart[item.id].count - 1 };
+  }
+
+  return { items: tempCart };
+};
+
+export const cartTotalPrice = selector({
+  key: "cartTotalPrice",
+  get: ({ get }) => {
+    const cart = get(cartState);
+
+    try {
+      const products = get(cartList);
+      if (!cart.items || !products.length) return 0;
+      return products.reduce((acc, cur) => acc + cur.price * cart.items[cur.id].count, 0);
+    } catch (e) {
+      console.error("cartTotalPrice Error:", e);
+      return 0;
+    }
+  },
+});
+
+export const cartTotalCount = selector({
+  key: "cartTotalCount",
+  get: ({ get }) => {
+    const cart = get(cartState);
+
+    try {
+      const products = get(cartList);
+      if (!cart.items || !products.length) return 0;
+      return products.reduce((acc, cur) => acc + cart.items[cur.id].count, 0);
+    } catch (e) {
+      console.error("cartTotalCount Error:", e);
+      return 0;
+    }
+  },
+});
