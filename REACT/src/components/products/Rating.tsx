@@ -1,14 +1,9 @@
 type TRatingProps = {
   rate?: number;
   count?: number;
-} & typeof defaultProps;
-
-const defaultProps = {
-  rate: 0,
-  count: 0,
 };
 
-const Rating = ({ rate, count }: TRatingProps): JSX.Element => {
+const Rating = ({ rate = 0, count = 0 }: TRatingProps): JSX.Element => {
   const stars = Array.from(Array(10));
   return (
     <div className="flex items-center mt-3">
@@ -34,7 +29,5 @@ const Rating = ({ rate, count }: TRatingProps): JSX.Element => {
     </div>
   );
 };
-
-Rating.defaultProps = defaultProps;
 
 export default Rating;
